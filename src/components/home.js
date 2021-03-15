@@ -1,6 +1,6 @@
 import { html, render } from 'https://unpkg.com/lit-html?module';
 
-const template = () => html`
+const template = (isAuthenticated) => html`
 <navigation-component></navigation-component>
 <section id="home-page">
     <div class="jumbotron jumbotron-fluid text-light" style="background-color: #343a40;">
@@ -9,16 +9,16 @@ const template = () => html`
         <h1 class="display-4">Movies</h1>
         <p class="lead">Unlimited movies, TV shows, and more. Watch anywhere. Cancel anytime.</p>
     </div>
-    <movies-component></movies-component>
+    ${isAuthenticated ? html `<movies-component></movies-component>` : ""}
 </section>
 `
 
 class Home extends HTMLElement {
     connectedCallback() {
-        this.render()
+        this.render(sessionStorage.getItem("user"))
     }
-    render() {
-        render(template(), this)
+    render(user) {
+        render(template(Boolean(user)), this)
     }
 }
 
