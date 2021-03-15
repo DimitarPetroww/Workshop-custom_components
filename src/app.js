@@ -24,5 +24,6 @@ router.setRoutes([
     { path: "/register", component: "register-component" },
     { path: "/login", component: "login-component" },
     { path: "/logout", component: "logout-component" },
-    { path: "/details/:id", component: "details-component"}
+    { path: "/details/:id", component: "details-component"},
+    { path: "/create", component: "create-component" },
 ])
