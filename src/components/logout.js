@@ -1,5 +1,4 @@
 import { html, render } from 'https://unpkg.com/lit-html?module';
-import { Router } from 'https://unpkg.com/@vaadin/router'
 import { logoutUser } from "../api/auth.js"
 
 const template = () => html` <home-component></home-component> `;

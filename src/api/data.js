@@ -6,17 +6,17 @@ const endpoints = {
 }
 const token = sessionStorage.getItem("_token")
 
-const getAll = () => request.bind(undefined, endpoints.all)
-const getOne = (id) => request.bind(undefined, endpoints.all + "/" + id)
-const post = (body) => request.bind(undefined, endpoints.all, {
+const getAll = () => request.call(undefined, endpoints.all)
+const getOne = (id) => request.call(undefined, endpoints.all + "/" + id)
+const post = (body) => request.call(undefined, endpoints.all, {
     method: "POST",
     headers: {
         "Content-Type": "application/json",
         "X-Authorization": token
     },
     body: JSON.stringify(body)
-})()
-const del = (id) => request.bind(undefined, endpoints.all + "/" + id, {
+})
+const del = (id) => request.call(undefined, endpoints.all + "/" + id, {
     method: "DELETE",
     headers: {
         "X-Authorization": token

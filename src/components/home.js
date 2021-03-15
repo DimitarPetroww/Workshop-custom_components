@@ -9,6 +9,7 @@ const template = () => html`
         <h1 class="display-4">Movies</h1>
         <p class="lead">Unlimited movies, TV shows, and more. Watch anywhere. Cancel anytime.</p>
     </div>
+    <movies-component></movies-component>
 </section>
 `
 
