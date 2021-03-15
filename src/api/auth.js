@@ -4,6 +4,7 @@ const URL = "http://localhost:3030"
 const endpoints = {
     login: URL + "/" + "users/login",
     register: URL + "/" + "users/register",
+    logout: URL + "/" + "users/logout"
 }
 
 const login = request.bind(undefined, endpoints.login)
@@ -27,4 +28,13 @@ function regusterUser(userData) {
         body: JSON.stringify(userData)
     })
 }
-export { loginUser, regusterUser}
+function logoutUser(token) {
+    fetch(endpoints.logout, {
+        method: "GET",
+        headers: {
+            "X-Authorization": token
+        }        
+    })
+    sessionStorage.clear()
+}
+export { loginUser, regusterUser, logoutUser}

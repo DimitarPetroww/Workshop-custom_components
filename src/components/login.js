@@ -3,6 +3,7 @@ import { html, render } from 'https://unpkg.com/lit-html?module';
 import { loginUser } from "../api/auth.js"
 
 const template = () => html`
+<navigation-component></navigation-component>
 <section id="form-login">
     <form class="text-center border border-light p-5" action="" method="" @submit="${onFormSubmit}">
         <div class="form-group">

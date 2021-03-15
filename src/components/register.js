@@ -3,6 +3,7 @@ import { html, render } from 'https://unpkg.com/lit-html?module';
 import { regusterUser } from "../api/auth.js"
 
 const template = () => html`
+<navigation-component></navigation-component>
 <section id="form-sign-up">
     <form class="text-center border border-light p-5" action="#" method="post" @submit="${onFormSubmit}">
         <div class="form-group">

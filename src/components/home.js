@@ -1,6 +1,7 @@
 import { html, render } from 'https://unpkg.com/lit-html?module';
 
 const template = () => html`
+<navigation-component></navigation-component>
 <section id="home-page">
     <div class="jumbotron jumbotron-fluid text-light" style="background-color: #343a40;">
         <img src="https://slicksmovieblog.files.wordpress.com/2014/08/cropped-movie-banner-e1408372575210.jpg"
