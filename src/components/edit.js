@@ -26,8 +26,6 @@ const template = (id) => html`
 async function onFormSubmit(e, id) {
     e.preventDefault()
     const data = [...new FormData(e.target)].reduce((a, [c, x]) => Object.assign(a, { [c]: x }), {})
-    console.log(id);
-
     if (Object.values(data).some(x => x === "")) {
         return alert("All fields must be filled!")
     }

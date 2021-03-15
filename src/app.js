@@ -1,4 +1,5 @@
 import { Router } from 'https://unpkg.com/@vaadin/router'
+
 import Navigation from "./components/navigation.js"
 import Movies from "./components/movies.js"
 import Home from "./components/home.js"

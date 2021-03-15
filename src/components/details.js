@@ -1,6 +1,6 @@
 import { Router } from 'https://unpkg.com/@vaadin/router'
 import { html, render } from 'https://unpkg.com/lit-html?module';
-import { getOne, getLikes, del } from "../api/data.js"
+import { getOne, getLikes, del, like, isLiked } from "../api/data.js"
 const template = (data) => html`
 <navigation-component></navigation-component>
 <section id="movie-example">
@@ -18,8 +18,10 @@ const template = (data) => html`
                 ? html`
                 <a class="btn btn-danger" href="#" @click="${(event) => deleteMovie(event, data._id)}">Delete</a>
                 <a class="btn btn-warning" href="/edit/${data._id}">Edit</a>`
-                : html`
-                <a class="btn btn-primary" href="#">Like</a>`}
+                : ""}
+                ${!data.isLikedAlready
+                ? html`<a class="btn btn-primary" href="#" @click="${(event) => likeMovie(event, data._id)}">Like</a>`
+                : ""}
                 <span class="enrolled-span">Liked ${data.likes}</span>
             </div>
         </div>
@@ -33,12 +35,22 @@ class Details extends HTMLElement {
         render(template(await this.getMovie(id)), this)
     }
     async getMovie(id) {
+        console.log('DA');
         const data = await getOne(id)
         const likes = await getLikes(id)
         const isAuthor = sessionStorage.getItem("_id") === data._ownerId
-        Object.assign(data, { likes, isAuthor })
+        const pplLiked = await isLiked(id)
+        const isLikedAlready = Boolean(pplLiked.find(x => x._ownerId === sessionStorage.getItem("_id")))
+        Object.assign(data, { likes, isAuthor, isLikedAlready })
         return data
     }
+}
+async function likeMovie(e, id) {
+    e.preventDefault()
+    await like(id)
+    
+    Router.go(`/`)
+    
 }
 async function deleteMovie(e, id) {
     e.preventDefault()
