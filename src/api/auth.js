@@ -19,7 +19,7 @@ function loginUser(userData) {
         body: JSON.stringify(userData)
     })
 }
-function regusterUser(userData) {
+function registerUser(userData) {
     return register({
         method: "POST",
         headers: {
@@ -37,4 +37,4 @@ function logoutUser(token) {
     })
     sessionStorage.clear()
 }
-export { loginUser, regusterUser, logoutUser}
+export { loginUser, registerUser, logoutUser}

@@ -20,4 +20,13 @@ const del = (id) => request.call(undefined, endpoints.all + "/" + id, {
         "X-Authorization": sessionStorage.getItem("_token")
     }
 })
-export {getAll, getOne, post, del}
+const edit = (id, data) => request.call(undefined, endpoints.all + "/" + id, {
+    method: "PUT",
+    headers: {
+        "Content-Type": "application/json",
+        "X-Authorization": sessionStorage.getItem("_token")
+    },
+    body: JSON.stringify(data)
+})
+const getLikes = (id) => request.call(undefined, URL + `/data/likes?where=movieId%3D%22${id}%22&distinct=_ownerId&count`)
+export {getAll, getOne, post, del, getLikes, edit}

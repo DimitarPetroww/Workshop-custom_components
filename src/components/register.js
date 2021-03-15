@@ -1,6 +1,6 @@
 import { Router } from 'https://unpkg.com/@vaadin/router'
 import { html, render } from 'https://unpkg.com/lit-html?module';
-import { regusterUser } from "../api/auth.js"
+import { registerUser } from "../api/auth.js"
 
 const template = () => html`
 <navigation-component></navigation-component>
@@ -36,7 +36,7 @@ async function onFormSubmit(e) {
         return alert("Passwords must match!")
     }
 
-    const r = await regusterUser({email: data.email, password: data.password})
+    const r = await registerUser({email: data.email, password: data.password})
     
     sessionStorage.setItem("_id", r._id)
     sessionStorage.setItem("_token", r.accessToken)
